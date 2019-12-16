@@ -26,9 +26,18 @@ extension ViewController {
         }
     }
     
+    func showIndicator(){
+        self.viewActivity.isHidden = false
+        self.activityIndicator.startAnimating()
+    }
     
+    func stopIndicator(){
+        self.viewActivity.isHidden = true
+        self.activityIndicator.stopAnimating()
+    }
     //Mark : ApiCall
     func callApi(){
+        showIndicator()
         let webSerManager = WebServiceManager()
         webSerManager.requestAPI(serviceEndpoint: (!isFilter) ? EndpointItem.PopularMovie(pageNumber: "\(pageNumber)") : EndpointItem.HighestRated(pageNumber: "\(pageNumber)"), parameters: nil, objectType: apiResultModal.self, isHud: false, controller: self, success: { (apiResModal) in
             let modal = apiResModal.results
@@ -47,6 +56,7 @@ extension ViewController {
                     }
                 }
                 DispatchQueue.main.async {
+                    self.stopIndicator()
                     self.collectionView.reloadData()
                 }
             }
@@ -65,12 +75,13 @@ extension ViewController : CustomHeaderDelegate{
     func onHeaderRightBtnClick() {
         self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: true)
         if searchBar.isHidden{
-            headerView.btnRight.setImage(#imageLiteral(resourceName: "setting"), for: .normal)
+            headerView.btnRight.setImage(#imageLiteral(resourceName: "funnel"), for: .normal)
             dropDown.hide()
         }else{
             searchBar.text = ""
-            headerView.btnRight.setImage(#imageLiteral(resourceName: "funnel"), for: .normal)
+            headerView.btnRight.setImage(#imageLiteral(resourceName: "search"), for: .normal)
             isSearch = false
+            searchPageNumber = 1
             isFilter = false
         }
         flipView()
@@ -83,26 +94,35 @@ extension ViewController : UISearchBarDelegate{
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         isSearch = false;
+        searchPageNumber = 1
+
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         isSearch = false;
+        searchPageNumber = 1
+
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         isSearch = false;
+        searchPageNumber = 1
+
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         isSearch = false;
+        searchPageNumber = 1
+
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText.count == 0 {
             isSearch = false;
+            searchPageNumber = 1
             self.collectionView.reloadData()
         } else if(searchText.count >= 2){
             fetchSearchApi(searchText: searchText)
@@ -110,20 +130,17 @@ extension ViewController : UISearchBarDelegate{
     }
     
     func fetchSearchApi(searchText : String){
+        showIndicator()
         let webSerManager = WebServiceManager()
         webSerManager.requestAPI(serviceEndpoint: EndpointItem.SearchMovie(searchText: searchText, pageNumber: "\(searchPageNumber)"), parameters: nil, objectType: apiResultModal.self, isHud: false, controller: self, success: { (apiResModal) in
             let modal = apiResModal.results
             if let movieMo = modal{
-                if self.arrSearchModal.count == 0{
-                    self.arrSearchModal = movieMo
-                }else{
-                    self.arrSearchModal.append(contentsOf: movieMo)
-                }
+                self.arrSearchModal = movieMo
+                
                 DispatchQueue.main.async {
                     self.isSearch = true;
+                    self.stopIndicator()
                     self.collectionView.reloadData()
-                    self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-
                 }
             }
         }) { (err) in

@@ -103,6 +103,27 @@
                                     <constraint firstItem="HGk-HO-pef" firstAttribute="leading" secondItem="5Hl-mD-vwD" secondAttribute="trailing" constant="8" id="ssk-0a-Kzl"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bid-PJ-chW">
+                                <rect key="frame" x="94" y="250" width="187.5" height="167"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YF5-Ga-pZ7">
+                                        <rect key="frame" x="83.5" y="43.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZt-PR-a8a">
+                                        <rect key="frame" x="54" y="79.5" width="79.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.73750535102739712" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="YF5-Ga-pZ7" firstAttribute="centerY" secondItem="bid-PJ-chW" secondAttribute="centerY" constant="-30" id="d18-vG-hma"/>
+                                    <constraint firstItem="eZt-PR-a8a" firstAttribute="centerX" secondItem="YF5-Ga-pZ7" secondAttribute="centerX" id="isy-je-Yl2"/>
+                                    <constraint firstItem="YF5-Ga-pZ7" firstAttribute="centerX" secondItem="bid-PJ-chW" secondAttribute="centerX" id="qS7-fI-Pcn"/>
+                                    <constraint firstItem="eZt-PR-a8a" firstAttribute="top" secondItem="YF5-Ga-pZ7" secondAttribute="bottom" constant="16" id="qjE-Hw-BlY"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ynd-4q-f4o">
                                 <rect key="frame" x="0.0" y="124" width="375" height="543"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -157,6 +178,8 @@
                         <constraints>
                             <constraint firstItem="XeI-am-Cxu" firstAttribute="top" secondItem="QAz-JM-3Hg" secondAttribute="top" id="4Y3-jN-NhJ"/>
                             <constraint firstItem="CI5-6q-rsL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="5Fn-q6-C6h"/>
+                            <constraint firstItem="bid-PJ-chW" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="Agb-t9-sis"/>
+                            <constraint firstItem="bid-PJ-chW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Bhm-WM-dHC"/>
                             <constraint firstItem="Ynd-4q-f4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Cua-27-jHg"/>
                             <constraint firstItem="QAz-JM-3Hg" firstAttribute="top" secondItem="CI5-6q-rsL" secondAttribute="bottom" id="Cz5-Fx-Kso"/>
                             <constraint firstItem="CI5-6q-rsL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Gl8-HW-OUI"/>
@@ -164,21 +187,25 @@
                             <constraint firstItem="Ynd-4q-f4o" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MWv-Kv-TbF"/>
                             <constraint firstItem="QAz-JM-3Hg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RGu-mF-fX0"/>
                             <constraint firstItem="QAz-JM-3Hg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZzR-Ip-XrV"/>
+                            <constraint firstItem="bid-PJ-chW" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="aFx-al-R5t"/>
                             <constraint firstItem="Ynd-4q-f4o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dD1-rf-dQc"/>
                             <constraint firstItem="XeI-am-Cxu" firstAttribute="trailing" secondItem="QAz-JM-3Hg" secondAttribute="trailing" id="dKV-OA-TfR"/>
                             <constraint firstItem="XeI-am-Cxu" firstAttribute="leading" secondItem="QAz-JM-3Hg" secondAttribute="leading" id="iVB-Yw-8Jg"/>
                             <constraint firstItem="CI5-6q-rsL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kR8-T2-nzi"/>
                             <constraint firstItem="XeI-am-Cxu" firstAttribute="bottom" secondItem="QAz-JM-3Hg" secondAttribute="bottom" id="lOe-83-RXN"/>
+                            <constraint firstItem="bid-PJ-chW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lPe-Xs-UEQ"/>
                             <constraint firstItem="QAz-JM-3Hg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="pBd-xW-hbI"/>
                             <constraint firstItem="XeI-am-Cxu" firstAttribute="height" secondItem="QAz-JM-3Hg" secondAttribute="height" id="roo-fk-Nnu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="YF5-Ga-pZ7" id="PUa-8o-kB0"/>
                         <outlet property="collectionView" destination="Ynd-4q-f4o" id="3V0-cw-4HA"/>
                         <outlet property="headerView" destination="CI5-6q-rsL" id="Jmw-Fv-YeF"/>
                         <outlet property="lbl_filterName" destination="n71-ee-eGj" id="Npj-z5-50U"/>
                         <outlet property="searchBar" destination="QAz-JM-3Hg" id="ZXg-yB-0D5"/>
+                        <outlet property="viewActivity" destination="bid-PJ-chW" id="Xae-bP-wOe"/>
                         <outlet property="view_filter" destination="XeI-am-Cxu" id="DrN-Zt-gfa"/>
                         <outlet property="view_filterOption" destination="HGk-HO-pef" id="3bV-l9-uTK"/>
                     </connections>

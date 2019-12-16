@@ -15,6 +15,6 @@ class ServiceApiPath {
      let popularMovie = "/movie/popular?api_key=b2c1941945e52bc3ddec31405535305e&language=en-US&page="
     let imageUrl = "https://image.tmdb.org/t/p/w500"
      let highestRated = "/movie/top_rated?api_key=b2c1941945e52bc3ddec31405535305e&language=en-US&page="
-    let searchMovie = "/search/movie?api_key=b2c1941945e52bc3ddec31405535305e&language=hi&query="
+    let searchMovie = "/search/movie?api_key=b2c1941945e52bc3ddec31405535305e&language=en-US&query="
 let empty = ""
 }

@@ -10,7 +10,9 @@ import UIKit
 import DropDown
 
 class ViewController: UIViewController {
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var headerView: CustomHeader!
+    @IBOutlet weak var viewActivity: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var view_filter: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -82,4 +84,12 @@ class ViewController: UIViewController {
         let uniques = Array(Set(values))
         return uniques
     }
+}
+
+
+extension ViewController{
+    
+    
+    
+    
 }
